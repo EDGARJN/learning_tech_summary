@@ -109,6 +109,12 @@
         - Reacting to event in both two direction
 
 
+- Customer property binding []
+    - There's scenerio in which you need to create a customer property so as you can pass data from parent component to its children... we use the following steps
+        - Define data type of the property into child component.
+        - use input decorator ``@Input()`` to expose your property so as to be used by other component
+
+
 
 
 
