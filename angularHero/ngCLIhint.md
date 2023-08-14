@@ -124,12 +124,4 @@
 
 
 
-## GROUP SAVING
-- **Task**
-    - What should I do to achieve these tasks ?
-        - kutengeneza vikundi
-            - kikundi kujiregister wenyewe
-        - payment option if needed
-        - web/mobile part
-        - mobile app should be easy as possible 
         

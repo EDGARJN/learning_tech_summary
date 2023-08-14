@@ -85,4 +85,30 @@
     - .. index operator (?[])
     - .. spread operator (...?)
 
+
+## NAMING STYLE IN DART
+- In dart we're using the following common ways for naming variables
+    
+    - *snake_case*
+        - commonly used in:
+            - folder naming: e.g: ``model , user_model``
+            - naming dart file. e.g: ``main.dart , auth_service.dart``
+            - import alias/prefix: e.g ``import "dart:math" as math , import "flutter:widget" as my_widget" `` 
+
+    - *UpperCamelCase (Pascal case)*
+        - You Must Use this naming convention in:
+            - naming dart classes/enum eg: `class User{} , class CustomerModel {}`
+
+    - *lowerCamelCase* used in naming:
+        - class members
+            - named constructor eg. {CustomerModel.**loyalCustomer()**}
+            - Methods eg: ``void myFunctionName()``
+            - Variables/fields/attributes/properties eg: ``String myVarName = "PHP Joker"`` 
+            - constant variables 
+
+
+    - **note:** It's bad practice to use:
+        - only UPPERCASE naming convention ``we're not pythonists :)`` , however this convention commonlt used in other language to declare **const** variables
+        - only lowercase naming convention
+
          
