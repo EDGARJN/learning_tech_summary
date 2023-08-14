@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shoping-list></app-shoping-list>
+      <app-recipes *ngFor="let el of serverElement" [elemet]="el"></app-recipes>
+      <app-shoping-list *ngFor="let elements of serverElement" [element]="elements"></app-shoping-list>
     </div>
   </div>
   

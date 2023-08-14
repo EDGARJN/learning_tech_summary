@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  serverElement:object[] = [{"name":"server0ne","amount":50},{"name":"server02","amount":70}];
   title = 'ordering_app';
 }
