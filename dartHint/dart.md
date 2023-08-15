@@ -1,6 +1,6 @@
 ## Some note taking about dart
 - **Factory constructor**
-    - This type of constructor avoid the class from returning its instance when it's called
+    - This type of constructor that avoid the class from returning its instance when it's called
     - Main used when you need to deserialize data (e.g from json to class object)
     - example:
         ```
@@ -45,7 +45,7 @@
         DbHelper._() // this is private/internal constructor
         static  final DbHelper dbHelper_instance = DbHelper._()
 
-        // since factory constructor don't need to return insrance lets use here 
+        // since factory constructor don't need to return instance lets use here 
         // this will avoid our class to be known as singleton class
         factor DbHelper() => dbHelper_instance
     }
@@ -66,24 +66,87 @@
 - Flow analysis
 - **Null aware operators**
     - *if-null operator (??)*
-        - this check if a value left of double question mark is null. if true it assign ``my_uni`` a value at the right side else assign it  the value in the left side:
+        - this check if a value in the left of double question mark is null. if true it assign ``my_uni`` a value at the right side else assign it  the value in the left side:
             ```
             String? uni;
             final my_uni = uni ?? "provide a name"
             ```
     - **Null aware assignment operator (??=)**
-        - if it's null the  assign this new value otherwise retains its value:
+        - if it's null then  assign this new value otherwise retains its value:
             ```
             // this check if dev provide its programming language otherwise he/she's PHP dev :)
             String? programming_lang;
             programming_lang ??= "PHP";
             ```
 
-    - Null aware access operator (?.) or Null aware method invocation operator
-    - .. assertion operator (!)
-    - .. cascade operator(?..)
-    - .. index operator (?[])
+    - **Null aware access operator (?.) or Null aware method invocation operator**
+        - This check object accessed if it's null. It return ``null`` if the object accessed it's null. e.g: ``name?.length;`` it'll return null if name is null otherwise it'll return a length of name;
+        - This is useful when you need to perfom an action when the value is non-value
+
+    - .. **Null aware assertion operator (!)**
+        - This turn null variable into non-nullable type bu asserting ***bang operator(!)*** or **null assertion operator(!)** at the end of nullable variable;
+            - eg:
+                ```
+                    var nonNullableString = nullableString!;
+
+                    bool? isRealProgrammer(String? language){
+                        if(language == "Dart"){
+                            return true;
+                        }else if(language == "PHP"){
+                            return false;
+                        }
+
+                        return false
+                    }
+
+                    bool answer = isRealProgrammer("Dart")!; // it'll return true, since anyone who understand Dart is a real programmer :)
+
+                    bool answer = isRealProgrammer("Dart"); // it'll return error: A value of type bool? can't be assigned to a variable of type bool.
+
+                    bool answer = isRealProgrammer("Dart")?? true; // This is alternative and useful way that will avoid app crashing.
+                ```
+
+    - .. **Null aware cascade operator(?..)**
+        - In the class there is ``cascade operator(..)`` that used to call multiple properties of the same object.
+        - e.g
+            ```
+                class Buddy {
+                String? name;
+                int? age;
+                        }
+
+                Buddy buddy = Buddy()
+                    ..name = "Kambona"
+                    ..age = 21;
+
+            ```
+        - But when your object is nullable you could use (?..) to call your object properties so as to avoid app crashing. You should inser this operator for the first item of the chain
+            - e.g
+                ```
+                Buddy? buddy2;
+                buddy2
+                ?..name="Yusco Dybala"
+                ..age=30;
+                ```
+            - if the buddy2 is null then the chain will be **short circuited**, that is terminated without calling other items in the cascade chain;
+
+    - **Null index operator (?[])**
+        - This is used to access element in the list when the list might be null:
+            - e.g:
+                ```
+                List<String>? buddyName = ["YOU","MY PATNER :)"];
+                String buddy1 = buddyName?[0];
+                ```
+            - note: the above list can be null but not its element of type ``String``
     - .. spread operator (...?)
+
+
+### Try to find out meaning of these terminology:
+- Single Responsibility Principle
+- SOLID principles
+- DRY (Donn't Repeat Yourself)
+- Higher Order Function
+
 
 
 ## NAMING STYLE IN DART
