@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector:"app-hader",
@@ -6,4 +6,9 @@ import { Component } from "@angular/core";
     styleUrls:["./header.component.css"]
 })
 
-export class HeaderComponent{}
+export class HeaderComponent{
+   @Output() feauture = new EventEmitter<number>;
+    switchOwner(id:number){
+        this.feauture.emit(id);
+    };
+}
