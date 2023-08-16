@@ -141,6 +141,91 @@
     - .. spread operator (...?)
 
 
+
+### COLLECTION 
+- List 
+    - ``List listName = [];`` list declaration
+    - ``listName[index]`` used to access list element of a specific index
+    - ``listName.add(element)`` used to add element into a list
+    - ``listName.remove(element)`` remove element from the list
+    - ``listName.indexOf(element)`` return index of a given element.
+    - keyword ``const`` used to define  deeply immutable list
+    
+    - List Properties 
+        - ``listName.first`` return the first element in the list
+        - ``listName.last`` return the last element in the list
+        - ``listName.isEmpty`` check whether a list is empty(true/false)
+        - ``listName.isNotEmpty`` check whether a list is not empty
+
+    - **Spread Operator(...)**
+        - use to combine two or more list in a one list
+            eg:
+            ```
+            const americanCars = ["TESLA Model X", "BMW X5"]
+            const japanCars = ["TOYOTA  Harrier", "TOYOTA V8"]
+            const showRoomCars = ["Range Rover",...japanCars,...americanCars]
+            ```
+    - **Spread Null Operator**
+        - first check if a list is a null, if it's then it'll omit a list
+            - eg:
+            ```
+            const americanCars = ["TESLA Model X", "BMW X5"];
+            const japanCars = ["TOYOTA  Harrier", "TOYOTA V8"];
+            const tanzaniaCars = ["KP Motors"];
+            List<String>? xCars;
+            final showRoomCars = ["Range Rover",...japanCars,...americanCars,...tanzaniaCars,...?xCars]
+            ```
+
+- SET
+    - It's the same as in mathematics... It's a list of distinct(i.e no repeation) elements.
+    - It's using curly bracket  ```{}```
+    - e.g:
+        ```
+        Set<int> setA = {1,4,5,2,4,1};
+        Set<int> serB = {2,4,6,9,6};
+
+        // output
+        {1,4,5,2} // setA
+        {2,4,6,9} // setB
+
+        ```
+    
+    - ``setA.contains(1)`` check whether setA contain integer 1
+    - ``setA.add(23);`` setA add another single element
+    - ``setA.addAll(45,12,76)`` setA add another more element
+    - ``setA.remove(23)`` setA remove element 23 from the collection
+
+    - **Intersection and Union**
+        - Do you remember about intersection and UNION ?? Venn Diagram.
+            - Intersection of setA and setB return setC which contain common element of setA and setB;
+                - e.g:
+                ```
+                    Set<int> setC = setA.intersection(setB);
+
+                    // output
+                     {2,4} // setC
+
+                ```
+            
+            - Union of setA and setB return a set that combine distinc value from setA and setB
+                - e.g:
+                    ```
+                       Set<int> setC = setA.union(setB);
+
+
+                        //output
+                        {1,4,5,2,6,9} // setC
+                    ```
+
+            - **note**: Set also support other operation as shown in the list below.
+                - collection-if -- contain if statement within a set for condition checking
+                - collection for -- iterate within a list
+                - for in loops
+                - forEach Loop
+                - spread Operator
+
+ 
+
 ### Try to find out meaning of these terminology:
 - Single Responsibility Principle
 - SOLID principles
@@ -175,3 +260,4 @@
         - only lowercase naming convention
 
          
+
