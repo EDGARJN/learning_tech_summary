@@ -7,15 +7,36 @@ void main(List<String> arguments) {
   String? buddy1 = buddyName?[3];
 
   Random result = Random(42);
-  
 
-  String? me;
-  me = "meame";
-  print(User.age);
-  print(result.toString());
-  bool answer = isRealProgrammer("Dart")!;
-  print(answer);
-  print(buddy1);
+  const firstName = 'Bob';
+  if (firstName == 'Bob') {
+    const lastName = 'Smith';
+  } else if (firstName == 'Ray') {
+    const lastName = 'Wenderlich';
+  }
+// final fullName = firstName + ' ' + lastName; // this error caused  by scope of lastName variable
+
+// LIST
+
+  List<String> listName = ["CSE", "CS", "TE"];
+  print(listName.first);
+
+  const americanCars = ["TESLA Model X", "BMW X5"];
+  const japanCars = ["TOYOTA  Harrier", "TOYOTA V8"];
+  List<String>? xCars;
+  final showRoomCars = [
+    "Range Rover",
+    ...japanCars,
+    ...americanCars,
+    ...?xCars
+  ];
+
+  print(showRoomCars);
+
+  // SET
+  Set<String> wealthMenSet = {'WarreBuffet', "Elon-MUSK", "Jeff Bezos"};
+  print(wealthMenSet);
+
   print('Hello world: ${dart_mind_opener.calculate()}!');
 }
 
