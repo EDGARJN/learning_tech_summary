@@ -112,7 +112,35 @@
 - Customer property binding []
     - There's scenerio in which you need to create a customer property so as you can pass data from parent component to its children... we use the following steps
         - Define data type of the property into child component.
-        - use input decorator ``@Input()`` to expose your property so as to be used by other component
+        - use input decorator ``@Input()`` to expose your property so as to be used in child component
+        - **note:** To pass data from parent component to the children component we use custom property ``[]``
+
+### TO INFORM PARENT ABOUT CHANGES
+- create an instance of``EventEmitter<dataType>()`` class
+- add ``@output()`` decorator.
+- use ``emit()`` method to update our exposed variable(instance);
+- eg: 
+```
+    @Output() feature = EventEmitter<Strring>();
+    addFeature(newF:String){
+        this.feature.emit(newF);
+    }
+```
+- when you need to use it in the parent component use bracket to call event and assign its value to the parent method: ``(feature)="newFeature($event)"``
+
+
+- Custom event property
+    - EventEmitter ?? 
+- Component angular life cycle
+    - ngOnchange
+    - ngOnInit
+    - ngDoCheck
+    - ngAfterContentInit
+    - ngAfterContentChecked
+    - ngAfterViewInit
+    - ngAfterViewChecked
+    - ngOnDestroy
+
 
 
 
