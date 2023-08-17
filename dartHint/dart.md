@@ -224,6 +224,55 @@
                 - forEach Loop
                 - spread Operator
 
+- **Map<key, value>**
+    - It's a data structure that hold key-value pairs.
+    - The key is the variable and value is the data that variable hold;
+    - The  way to find a value is to give map the key that mapped to that value;
+    - The key of the map should be unique.
+    - e.g 
+        ```
+            {'name':"Cement", 'amount':500}
+            // name and amount are keys while Cement and 500 are their corresponding values;
+        
+        ```
+
+    - Map take two type parameters one for the key and one for the value;
+    - e.g:
+        ```
+            final Map<String,int> emptyMap = {}; or // String is a key data type and int is the value data type;
+            final emptyMap = <String , int >{}; or
+            final emptyMap = {} // Dart will assign both key and value type as a dynamic
+        ``` 
+
+    - Map Operations
+        - Accessing element
+            ```mapName['keyName']``` a map will return a null if a  key does not exist.
+        - Add element to the map
+            ```mapName['newKeyName'] = value; ```
+        - Update an element
+            ```mapName['keyName'] = newValue/Override value``` If keyName exist in the map its value will be overrided by this new value;
+        - Remove an element 
+            ```mapName.remove("keyName")```
+
+    - Map properties 
+        - check if is empty    ``mapName.isEmpty``
+        - check if is not empty ``mapName.isNotEmpty``
+        - check its length ``mapName.length``
+        - return a set of all map keys ``mapName.keys``
+        - return a set of all map values ``mapName.values``
+        - check if a key is existing ``mapName.containsKey('keyName');``
+        - check if a value is existing ``mapName.containsValue('value');``
+
+    - Looping over the map
+        - *for-in-loop* can't  iterate over the it, but it can iterate over the map keys or values properties.
+        - e.g:
+            ```
+             // iterate over the map keys and use it to access a map value.
+             for(var key in mapName.keys){
+                print(mapNam[key]);
+             }
+            ```
+
  
 
 ### Try to find out meaning of these terminology:
@@ -231,6 +280,7 @@
 - SOLID principles
 - DRY (Donn't Repeat Yourself)
 - Higher Order Function
+- how to combine a higher order methods
 
 
 
