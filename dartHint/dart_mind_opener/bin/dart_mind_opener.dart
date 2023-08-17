@@ -1,20 +1,10 @@
-import 'dart:math';
-
 import 'package:dart_mind_opener/dart_mind_opener.dart' as dart_mind_opener;
+import 'package:dart_mind_opener/map_collection.dart';
+import 'package:test/test.dart';
 
 void main(List<String> arguments) {
   List<String>? buddyName;
   String? buddy1 = buddyName?[3];
-
-  Random result = Random(42);
-
-  const firstName = 'Bob';
-  if (firstName == 'Bob') {
-    const lastName = 'Smith';
-  } else if (firstName == 'Ray') {
-    const lastName = 'Wenderlich';
-  }
-// final fullName = firstName + ' ' + lastName; // this error caused  by scope of lastName variable
 
 // LIST
 
@@ -36,6 +26,23 @@ void main(List<String> arguments) {
   // SET
   Set<String> wealthMenSet = {'WarreBuffet', "Elon-MUSK", "Jeff Bezos"};
   print(wealthMenSet);
+
+  // Map
+  MapModel map = MapModel();
+  Map stock = map.stockItem;
+
+  print(stock.keys);
+  print(stock.values);
+  print(stock.entries);
+
+  // loop over the map keys
+  // for (var key in stock.keys) {
+  //   print(stock[key]);
+  // }
+  List stocks = [3,5,6,1,'MAMA'];
+  var data = stocks.map((value) => value);
+  map.overBothKeyAndVal();
+  print(data);
 
   print('Hello world: ${dart_mind_opener.calculate()}!');
 }
