@@ -141,7 +141,10 @@
     - ngAfterViewChecked
     - ngOnDestroy
 
-
+- Before You sleep
+    - Undersand directive
+        - Structured Directives and Attribute Directive
+    - @viewChild
 
 
 
