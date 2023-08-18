@@ -1,7 +1,8 @@
 <div class="row">
+   <form action="">
     <div class="col-sm-5 form-group">
         <label for="name">Recipe Name</label>
-        <input type="text" id="name" class="form-control" #name >
+        <input type="text" id="name" class="form-control" #name required>
     </div>
     <div class="col-sm-5 form-group">
         <label for="amount" >Description</label>
@@ -16,6 +17,7 @@
        
         <button class="btn btn-success" (click)="regRecipe()">New Recipe</button>
     </div>
+   </form>
 </div>
 <hr>
 <div class="row">

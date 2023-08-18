@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Injectable, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from 'src/app/services/recipe/service.recipe';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,6 +10,7 @@ import { RecipeService } from 'src/app/services/recipe/service.recipe';
 })
 
 export class RecipeListComponent implements OnInit {
+[x: string]: any;
 
   constructor(private recipeService: RecipeService) { }
   // @Output() wasSelected = new EventEmitter<Recipe>();
@@ -24,7 +26,7 @@ export class RecipeListComponent implements OnInit {
 
   regRecipe() {
     this.recipeService.addRecipe(
-      new Recipe(this.recipe_name.nativeElement.value, this.recipe_desc.nativeElement.value, this.imgPth.nativeElement.value));
+      new Recipe(this.recipe_name.nativeElement.value, this.recipe_desc.nativeElement.value, this.imgPth.nativeElement.value,[]));
 
   }
 
@@ -33,7 +35,13 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.recipes.push(new Recipe("Sambusa","It includes sausages","https://shorturl.at/yBDE6"), new Recipe("Vegeterian Recipe","specific for meat hater","https://shorturl.at/belBR"))
+    this.recipes.push(
+      new Recipe("Sambusa",
+    "It includes sausages",
+    "https://shorturl.at/yBDE6",[new Ingredient("Ngano",4), new Ingredient("Cassava",40)]), 
+    new Recipe("Vegeterian Recipe",
+    "specific for meat hater",
+    "https://shorturl.at/belBR",[new Ingredient("Spinachs",5)]))
   }
 
 }
