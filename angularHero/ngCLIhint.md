@@ -141,8 +141,149 @@
     - ngAfterViewChecked
     - ngOnDestroy
 
+- Before You sleep
+    - Undersand directive
+        - Structured Directives and Attribute Directive
+    - @viewChild
+
+- ## @ViewChild
+    - The ``@ViewChild`` decorator in Angular is used to obtain a reference to an element or directive from the template, allowing you to interact with that element or directive in your component class
 
 
+- ## Directives
+    - Structured Directives
+        - change the structure of the DOM by adding or removing an element
+            - ``*ngFor``
+            - ``*ngIf=""``
+            - ``[ngSwitch]``
+        - **note:**  asterik(*) indicate a structural directives
+
+        - **Custom Structured Directives
+            - for custom *ngIF directives:
+                - remember to use **TemplateRef** for template reference and **ViewContainer** for viewing referenced template.
+
+
+    - Attribute Directives
+        - Change appearance or behavior of the web
+        ``[NgClass] = "[className: condition/expression]"`` 
+
+        -  **Custom attribute directives**
+            - a way to extend the capabilities of the framework by creating your own reusable behaviors that can be applied to elements in the DOM
+            - Creating custom directives can significantly enhance code organization, reusability, and maintainability in your Angular projects
+
+            - Generate custom directive in CLI ``ng g d directiveName``
+            - note: When you create a custom directive make sure to include ``ElementRef and Renderer2`` by importing from ``@angular/core``
+            - e.g:
+                ```
+                    import { Directive, ElementRef, OnInit, Renderer2 } from '@angular/core';
+
+                    @Directive({
+                    selector: '[appItemColor]'
+                    })
+                    export class ItemColorDirective implements OnInit {
+
+                    constructor(private elR:ElementRef, private renderer:Renderer2) { }
+
+                    ngOnInit(): void {
+                        this.renderer.setStyle(this.elR.nativeElement, "backgroundColor","blue");
+                    }
+
+                    }
+                ```
+            - **Renderer2**
+                -  is an important service provided by Angular that allows you to interact with the DOM (Document Object Model) in a way that's consistent across different environments, including web browsers and server-side rendering.
+
+                - Some common tasks you can perform using Renderer2 include:
+
+                    - **Creating Elements:** You can create new DOM elements using the createElement method.
+
+                    -   **Adding and Removing Elements:** You can add or remove elements to/from the DOM using appendChild, removeChild, and related methods.
+
+                    -   **Modifying Element Properties:** You can change element properties such as attributes, classes, styles, and text content using methods like setAttribute, addClass, setStyle, and setText.
+
+                    -   **Listening to Events:** You can attach event listeners to elements using listen.
+
+            
+            - **@HostListener(eventSupportedByTheDOM)**
+                - is a decorator in Angular that allows you to listen for events on the host element of a directive or component.
+                - e.g:
+                    ```
+                         @HostListener("mouseenter") onMouseOver(){
+                            console.log("User Arrive Here");
+                        }
+                    ```
+                - Using @HostListener is a clean and declarative way to add interactivity and behavior to your components and directives without directly manipulating the DOM or handling events in your component's template. It helps to encapsulate behavior in a more organized and maintainable manner.
+
+                - here's a list of common mouseevent and keyboard  DOM events that you can listen to using @HostListener:
+                    - Mouse Events:
+                        - 'click'
+                        - 'dblclick'
+                        - 'mousedown'
+                        - 'mouseup'
+                        - 'mouseenter'       
+                        - 'mouseleave'
+                        - 'mousemove'
+                        - 'mouseout'
+                        - 'mouseover'
+                    
+                    - Keyboard Events:
+                        - 'keydown'
+                        - 'keyup'
+                        - 'keypress'
+
+            - @HostBinding("style.property")
+
+- **note** directive focused on behavior and manipulation of the DOM
+
+                
+
+- **Service and Dependency Injenction**
+    - This is way of sharing service to any component in the app as more as it needed.
+    - Steps to inject service to components are:
+        - Import service class into the component
+        - initialize constructor with constructor params of type service class
+        - includes service name inot the providers section that found in the @component Decorator
+
+    - Inject Service into another Service:
+        - In order to inject one service into another service you need to include injectable decorator ``@Injectable()`` in both services.
+        - e.g: I need to inject logService into Accounts Service so as I can get log in every user registration activity
+            ```
+                // Service 1
+                @Injectable()
+                class LogService{
+                    // Logic Here
+                }
+
+
+                // Service 2
+                @Injectable()
+                class AccountService{
+                    constructor(private logService:LogService){}
+
+                    onUserRegistration(){
+                        // Logic Here
+                    }
+                }
+            
+
+            ```
+
+        - **Good Practice**
+            ``` 
+                // service
+                @Injectible({providedIn: "root"})
+                export class MyService{
+                    
+                }
+            ```
+
+
+
+
+
+
+- ## **NgOnInit**
+    - It provides a place for you to perform initialization tasks that should occur after the component or directive has been instantiated and its inputs are available, but before it's displayed on the screen.
 
 
 
@@ -152,6 +293,9 @@
         - Features
 - Model (Data) 
     - How you're arranging your data
+
+
+
     
 
 

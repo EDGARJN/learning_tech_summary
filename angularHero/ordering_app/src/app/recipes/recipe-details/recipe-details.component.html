@@ -1,20 +1,21 @@
+
 <div class="row">
     <div class="col-xs-12">
-        <img src="" alt="" class="img-responsive">
+        <img [src]="[recipe.imagePath]" [alt]="[recipe.name]" style="max-height: 200px;" class="img-responsive">
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <h1>Recipe Name</h1>
+        <h1  appItemColor [defaultFontSize]="'10px'" [highLightFontSize]="'100px'">{{recipe.name}}</h1>
     </div>
 </div>
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="btn-group">
+        <div class="btn-group" appDropdownDirective>
             <button class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li><a href="#">To shopping list</a></li>
+                <li><a href="#" (click)="toShopingList(recipe.ingredient)">To shopping list</a></li>
                 <li><a href="#">Editing List</a></li>
                 <li><a href="#">Delete Recipe</a></li>
             </ul>
@@ -24,12 +25,17 @@
 
 <div class="row">
     <div class="col-xs-12">
-        Ingredient
+        <ul class="nav justify-content-center" *ngFor="let ing of recipe.ingredient">
+            <li class="nav-item">
+                <p>{{ing.name}} - {{ing.amount}}</p>
+            </li>
+            
+        </ul>
     </div>
 </div>
 
 <div class="row">
     <div class="col-xs-12">
-        Description
+        {{recipe.desc}}
     </div>
 </div>
