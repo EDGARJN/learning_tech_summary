@@ -17,4 +17,10 @@ export class ShoppingService{
     fetchIngredient(){
         return this.ingredientTable.slice();
     }
+
+    fromRecipe(ingr:Ingredient[]){
+        this.ingredientTable.push(...ingr);
+        this.newIngredients.emit(this.ingredientTable.slice())
+
+    }
 }
