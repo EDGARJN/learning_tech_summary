@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Recipe } from '../recipe.model';
-import { ShoppingService } from 'src/app/services/shopping/shopping.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+import { RecipeService } from 'src/app/services/recipe/recipe.service';
 
 
 @Component({
@@ -10,10 +10,10 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
   styleUrls: ['./recipe-details.component.css']
 })
 export class RecipeDetailsComponent{
-  constructor(private shoppingService:ShoppingService){}
+  constructor(private recipeService:RecipeService){}
  @Input() recipe:Recipe;
  
 toShopingList(ingr:Ingredient[]){
- ingr.forEach((ing)=> this.shoppingService.shopIngredient(ing))
+ this.recipeService.addToshopingList(ingr)
 }
 }

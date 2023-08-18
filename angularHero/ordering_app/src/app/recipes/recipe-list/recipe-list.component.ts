@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Injectable, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Recipe } from '../recipe.model';
-import { RecipeService } from 'src/app/services/recipe/service.recipe';
+import { RecipeService } from 'src/app/services/recipe/recipe.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
