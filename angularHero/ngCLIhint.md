@@ -146,8 +146,11 @@
         - Structured Directives and Attribute Directive
     - @viewChild
 
+- ## @ViewChild
+    - The ``@ViewChild`` decorator in Angular is used to obtain a reference to an element or directive from the template, allowing you to interact with that element or directive in your component class
 
-- Directives
+
+- ## Directives
     - Structured Directives
         - change the structure of the DOM by adding or removing an element
             - ``*ngFor``
@@ -230,15 +233,54 @@
 
             - @HostBinding("style.property")
 
+- **note** directive focused on behavior and manipulation of the DOM
+
                 
 
 - **Service and Dependency Injenction**
-    - 
+    - This is way of sharing service to any component in the app as more as it needed.
+    - Steps to inject service to components are:
+        - Import service class into the component
+        - initialize constructor with constructor params of type service class
+        - includes service name inot the providers section that found in the @component Decorator
+
+    - Inject Service into another Service:
+        - In order to inject one service into another service you need to include injectable decorator ``@Injectable()`` in both services.
+        - e.g: I need to inject logService into Accounts Service so as I can get log in every user registration activity
+            ```
+                // Service 1
+                @Injectable()
+                class LogService{
+                    // Logic Here
+                }
+
+
+                // Service 2
+                @Injectable()
+                class AccountService{
+                    constructor(private logService:LogService){}
+
+                    onUserRegistration(){
+                        // Logic Here
+                    }
+                }
+            
+
+            ```
+
+        - **Good Practice**
+            ``` 
+                // service
+                @Injectible({providedIn: "root"})
+                export class MyService{
+                    
+                }
+            ```
 
 
 
 
-- **note** directive focused on behavior and manipulation of the DOM
+
 
 - ## **NgOnInit**
     - It provides a place for you to perform initialization tasks that should occur after the component or directive has been instantiated and its inputs are available, but before it's displayed on the screen.
@@ -251,6 +293,9 @@
         - Features
 - Model (Data) 
     - How you're arranging your data
+
+
+
     
 
 
