@@ -277,6 +277,146 @@
                 }
             ```
 
+- ## ROUTING
+    - Is the mechanism that put association between component and URL, It allow user to navigate from one view(Component) to another without loading a page. Routing help consist the Single Page Application(SPA) and main app state
+
+    - **Angular Routing includes**
+        - **Routes Configuration**
+            - here you configure your route by mapping url path into its componet
+            - all routes are configured in the app module so as to be accessed over the all application.
+            - Declare your routes list with type ``Routes``, that contain an object which include ``path`` and ``component`
+            - e.g:
+                ```
+                    import {Routes,RouterModule} from "angular/route"
+
+                    const appRouter:Routes = [
+                        {path:"path-name", component:ComponentName},
+                        {path:"path-name2", component:ComponentName2},
+                        {path:"not-found",component:NotFoundComponent},
+                        {path:"**", redirectTo:"/not-found} // this wildcard path ensure that if user enter wrong url path will be redirected to not found component. 
+                    ]
+
+                    @NgModule({
+                        imports:[
+                            RouterModule.fromRoot(appRouter)
+                        ]
+                    })
+                ```
+        - **Render Component (Router Outlet)**
+            - To render a componet that mapped in specific ``url`` you should use angular router directive called ``router-outlet``
+            - add ``<router-outlet></router-outlet>`` to the template that you need your component mapped into url path to be rendered.
+
+        - **Navigation**
+            - You can navigate through your component that mapped into your url path by using Routes Service called ``Router`` that has method called ``navigate`` 
+            - e.g:
+                ```
+                    onButtonClciked(){
+                        Router.navigate(["/path-name"])
+                    }
+                ```
+            - To enable navigation menu bar item to work, i.e ``anchor <a> `` tag we should replace ``href=""`` with ``routerLink="/route-link-that specified in the path of appRoutes Object"`` with leading ``/``
+
+            - e.g:
+             ```
+                <a routerLink="/">Home</a>
+                <a [routerLink]="["/users"]">Users</a>  <!--  I use property binding -->
+            ```
+            - enable navigation bar menu item to be active when user click it: You should use and add: property ``routerLinkActive="className"``  for bootstrap we set ``className`` = ``active``
+            - e.g:
+            ```
+                <div routerLinkActive="active" [routerLinkActiveOptions={exact:true}]> <a  routerLink="/" >Home</a></div>
+                <dive routerLinkActive="active"> <a routerLink="/users">Users</a></dive>
+            ```
+            - note: in the first anchor tag(Home) we add routerLinkOption to deactivate Home element when user change routes by clicking other navigation element item. As you see in every item's routes include ``/`` that means ``Home`` so without telling ``Home`` item that should be active only and only when link is ``/`` without any trailing routes path.
+
+        - **URL Parameter**
+            - You can pass parameter in the URL configured in the appRoutes by add ``/:parameter_name`` in the  url trail.
+            - We use ``ActivatedRoute`` Service to access the parameter passed in the URL
+            - So in order to use this service first we need to **injenct** it in our component
+                - e.g:
+                    ```
+                        id:string 
+                        constructor(private route:ActivatedRoute){}
+                        
+                        // The value accessed on component initialization
+                        // will never change until the component is reinitiliaze
+                        ngOnInit(){
+                        this.id = this.route.snapshot.params['id'];
+                        }
+
+                        // to solve above issue replace "this.id = this.route.snapshot.params['id'];" with ``this.route.params.subscribe((param:Params)=>{
+                            this.id = params['id'];
+                        })``
+                    ```
+
+                - Use subscribe when you're sure that prameter will be changed after app initizilized.
+
+                - Query Parameters  and fragment
+                    - add data bindind in the menu item link
+                        - 
+                        ```
+                        <a [routerLink]="["/users","edit"]" [queryParams]="{allowEdit:1}"  [fragment]="'loading'">Users</a>
+                        
+                        ```
+
+                    - Programatic
+                        ```
+                          onClickButton(){
+                            this.route.navigate(["/path-name","edit"],{queryParams:{allowEdit:1},fragment:"loading"})
+                          }
+                        ```
+                    - Access Data
+                        - ``this.route.snapshot.queryParams;``
+                
+  
+
+
+    - **Redirected and WildCard Route**
+        - Redirected Route
+            - This ensure when user enter a certain url will be redirected to certain component
+        - Wildcard Route
+            - This ensure that if user enter wrong url path or path that not found in our routes array will redirected to not found component: ``{path:"**",component:NotFoundComponent}``
+
+    - Outsourcing the routes
+        - As the application grow it can more routes that can make our app-module feel boared :) So we need to outsource our routes and import them to app-module
+        - 
+        ```
+        // app-routing-module.ts
+        appRoutes:Routes = [
+            {path:"",component:HomeComponent},
+            {path:"about",component:AboutComponent}
+        ]
+
+        @NgModule({
+            imports:[
+                RouterModule.forRoot(appRoutes)
+            ],
+            export:[RouterModule]
+        })
+
+        export class OutSourcingRoutes{
+
+        }
+        
+        ```
+
+        - let use in our app.module.ts
+        ```
+            import {OutSourcingRoutes} from 'app-routing-module.ts
+            // import into app.module.ts in the imports sections
+
+            @NgModule({
+                declaration:[],
+                imports:[OutSourcingRoutes],
+                providers:[],
+                bootstrap"[]
+            })
+        ```
+
+    - **Routes Protection(Guard)**
+        - canActivate ?
+        - canActivateChild ?
+
 
 
 
@@ -297,6 +437,7 @@
 
 
     
+
 
 
 
