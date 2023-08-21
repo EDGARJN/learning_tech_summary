@@ -22,4 +22,8 @@ export class RecipeService{
     addToshopingList(ingr:Ingredient[]){
         this.shoppingService.fromRecipe(ingr)
     }
+
+    getSpecificRecipe(id:number){
+        return this.recipeTable[id]
+    }
 }
