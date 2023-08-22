@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Injectable, Input, OnInit, Output,
 import { Recipe } from '../recipe.model';
 import { RecipeService } from 'src/app/services/recipe/recipe.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-list',
@@ -23,6 +24,8 @@ export class RecipeListComponent implements OnInit {
   @ViewChild("desc", { static: true }) recipe_desc: ElementRef;
   @ViewChild("imagePath", { static: true }) imgPth: ElementRef;
 
+  registForm:FormGroup
+
 
   regRecipe() {
     this.recipeService.addRecipe(
@@ -30,11 +33,24 @@ export class RecipeListComponent implements OnInit {
 
   }
 
+
+
+  onSubmit(){
+    console.log(this.registForm.get("desc").value);
+  }
+
   updateWasSelected(rec: Recipe) {
     this.recipeService.single_recipe.emit(rec);
   }
 
   ngOnInit(): void {
+
+    this.registForm = new FormGroup({
+      "name":new FormControl("",Validators.required),
+      "desc":new FormControl(null),
+      "imagePath":new FormControl(null)
+    })
+
     this.recipes.push(
       new Recipe("Sambusa",
     "It includes sausages",
