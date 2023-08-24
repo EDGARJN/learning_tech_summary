@@ -568,7 +568,41 @@
             
 
         
+### AUTHENTICATION AND ROUTES PROTECTION
+- I advice to use :
+    - pipe
+    - observer to observe user token.
+    - subject to emit user details over the application
 
+
+### Angular Module
+- Module is a bundle that compose ``Component``,``Directives``,``Routes``  and other ``modules``
+- If you've large project you're advised to split your project into modules.
+
+- **Feature MOdule**
+    - Based on app/project feature or main component
+- **Shared Module**
+- **Core Module**
+
+
+### Standalone Component
+- This is a component that work without module
+- It's accomplished set``standalone=true`` in component decorator and remove component name in the declaration section of app module after removed in order to be used you should import it into component that needed to be used.
+- e.g:
+    ```
+        @Component({
+            standalone:true,
+            selector:"app-x",
+            styleURLs:["ss.css"],
+            templateURLs:"t.html"
+        })
+        export class XComponent{}
+
+        // will be used here
+        @Component({
+            imports:[XComponent]
+        })
+    ```
 
 
 
@@ -589,10 +623,28 @@
 
 
     
+## DO YOU WANT SELL SUGAR WATER REST OF YOUR LIFE? Or DO YOU WANT COME WITH ME AND CHANGE THE WORLD.?
+## WHAT I HEAR I HEAR, I FORGET. WHAT I SEE I REMEMBER. WHAR I DO, I UNDERSTAND
 
-
-
+### WHY PROGRAMMERs IS NOT THE SAME AS HUMAN BEING? BECAUSE THEY 
+- Do IT. (Don't loose your time watching tutorial without practicing... Practice as you watch... otherwise you'll forget what you've learnt)
+- Start a project
+- Choose a specific language to focus on ``don't jump jump in the PL forest``
+- Invest in the setup ``Buy good Laptop with reasonable perfomance``
+- Learn to solve a problem without relying on others(friends) ``every one can search but not every one can search well``
+- Are not individual contributor BUT independently contributor
+- LeetCode Early
+- Know time and space complexity
+- use ``ctrl + c`` and ``ctrl + v``
+- Believe computer can't be wrong but them
+- **WIN** 
+    - Perseverance
+    - HUmility
+    - Determination
 
 
 
         
+
+
+- percent
