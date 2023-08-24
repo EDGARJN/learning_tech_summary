@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { RecipeService } from '../services/recipe/recipe.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-recipes',
@@ -10,7 +11,7 @@ import { RecipeService } from '../services/recipe/recipe.service';
 export class RecipesComponent implements OnInit {
   finalRecipe:Recipe;
 
-  constructor(private recipeService:RecipeService){
+  constructor(private recipeService:RecipeService, private http:HttpClient){
   
   }
 
@@ -19,6 +20,13 @@ export class RecipesComponent implements OnInit {
       this.finalRecipe = recipe;
       alert(recipe.name)
     })
+  }
+
+  addUSer(){
+    this.http.post("http://127.0.0.1:3900/api/user/user_data", {"fname":"TESTER", "mname":"TESTERMID", "lname":"TESTERLAST","email":"ed@gm","contact":"065873482",'staff_id':89} ).subscribe((response:Response)=>{
+      console.log(response);
+    });
+
   }
 
 

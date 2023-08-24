@@ -1,21 +1,21 @@
 <div class="row">
-   <form action="">
+   <form [formGroup]="registForm" (ngSubmit)="onSubmit()">
     <div class="col-sm-5 form-group">
         <label for="name">Recipe Name</label>
-        <input type="text" id="name" class="form-control" #name required>
+        <input type="text" id="name" class="form-control" formControlName="name">
     </div>
     <div class="col-sm-5 form-group">
         <label for="amount" >Description</label>
-        <input type="text" id="amount" class="form-control" #desc>
+        <input type="text" id="amount" class="form-control" formControlName="desc">
     </div>
     <div class="col-sm-5 form-group">
         <label for="amount" >Image Link</label>
-        <input type="text" id="amount" class="form-control" #imagePath>
+        <input type="text" id="amount" class="form-control" formControlName="imagePath">
     </div>
     <hr>
     <div class="col-xs-12">
        
-        <button class="btn btn-success" (click)="regRecipe()">New Recipe</button>
+        <button class="btn btn-success" type="submit">New Recipe</button>
     </div>
    </form>
 </div>
