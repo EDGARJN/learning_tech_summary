@@ -621,6 +621,11 @@
     - How you're arranging your data
 
 
+- ## SIGNALS ([more infor about signal](https://github.com/angular/angular/discussions/49685))
+    - How to assign,update,delete values by using signals...
+    - Value are called as function  
+
+
 
     
 ## DO YOU WANT SELL SUGAR WATER REST OF YOUR LIFE? Or DO YOU WANT COME WITH ME AND CHANGE THE WORLD.?
